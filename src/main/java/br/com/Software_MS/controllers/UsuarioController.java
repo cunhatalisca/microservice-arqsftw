@@ -51,19 +51,4 @@ public class UsuarioController {
         return usuarioService.deletarUsuario(id) ? "Usuário deletado com sucesso" : "Usuário não encontrado";
     }
 
-    // validar login
-    @PostMapping("/login")
-    public Map<String, Object> validarLogin(@RequestBody Usuario usuario) {
-        boolean loginValido = usuarioService.validarLogin(usuario.getEmail(), usuario.getSenha());
-
-        //Hash map para estruturar melhor a resposta
-        Map<String, Object> response = new HashMap<>();
-        response.put("sucesso", loginValido);
-        if (loginValido) {
-            response.put("mensagem", "Login realizado com sucesso");
-        } else {
-            response.put("mensagem", "Email ou senha inválidos");
-        }
-        return response;
-    }
 }
