@@ -40,6 +40,8 @@ public class UsuarioController {
     // Atualizar um usuário existente
     @PutMapping("/{id}")
     public UsuarioDTO atualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuarioAtualizado) {
+        usuarioAtualizado.setIdUsuario(id); // GARANTIR que o ID está setado
+
         return usuarioService.atualizarUsuario(id, usuarioAtualizado);
     }
 
